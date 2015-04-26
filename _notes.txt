@@ -29,14 +29,37 @@ echo # _template >> README.md
 git init
 git add README.md
 git commit -m "first commit"
+
+// Keep on sticking on this part use part b. if doesn't work
+
 git remote add origin https://github.com/AdamLawrenceDesign/_template.git
 git push -u origin master
 
+// Then use git push
 
-// test
+###############################
+If this doesn't work try this - the third version uses github instead of origin 
 
+git remote add github git@github.com:AdamLawrenceDesign/'repoName'.git
 
-//**************************//
+// this is what I used last night to get things working
+
+git remote set-url origin git@github.com:AdamLawrenceDesign/'repoName'.git
+git remote add github git@github.com:AdamLawrenceDesign/'repoName'.git   
+
+################################
+
+And finally 
+
+git push --set-upstream origin master
+git push
+
+-- End
+
+################################
+			Node !
+################################
+
 
 npm install -g grunt-cli
 // install grunt globally 
