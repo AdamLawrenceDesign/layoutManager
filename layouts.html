@@ -16,6 +16,7 @@
     <script type="text/javascript" src="lib/src/js/masonry.pkgd.min.js"></script>
     <script type="text/javascript" src="lib/src/js/element-builder.js"></script>
     <script type="text/javascript" src="lib/src/js/redirect-manager.js"></script>
+    <script type="text/javascript" src="lib/src/js/layout-settings.js"></script>
     <script type="text/javascript" src="lib/src/js/event-manager.js"></script>
     <script type="text/javascript" src="lib/src/js/layoutManager-init.js"></script>
     
@@ -25,78 +26,13 @@
 
     <header class="prm box-shadow ease_sd">
         <img id="header_logo" class="fl_lt" src="assets/svg/logo.svg?v1.1" alt="" />
-        <span id="headerMessage">Welcome Adam</span>
-        <!-- 
-        <ul class="inline tabs txt_sm clearfix">
-            <li id="tab-order" class="std">
-                <a href="#">
-                    Home
-                </a>
-            </li>
-            <li id="tab-products" class="dropDown">
-                <a href="#">
-                    Products
-                    <span class="icon-arrow-down m_l_left"></span>
-                </a>
-                <ul class="sub">
-                    <li>
-                        <a href="mostRecent">
-                            Most Recent
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mostRecent">
-                            Highest Rank
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mostRecent">
-                            Oldest
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li id="tab-editedBy" class="dropDown">
-                <a href="#">
-                    Edited By
-                    <span class="icon-arrow-down m_l_left"></span>
-                </a>
-                <ul class="sub">
-                    <li>
-                        <a href="mostRecent">
-                            Most Recent
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mostRecent">
-                            Highest Rank
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mostRecent">
-                            Oldest
-                        </a>
-                    </li>
-                </ul>    
-            </li>
-            <li id="tab-types">
-                <a href="#">
-                    Types
-                    <span class="icon-arrow-down m_l_left"></span>
-                </a>
-                <ul class="sub">
-                </ul>
-            </li>
-        </ul>
-        <a id="hamburger" class="fl_rt" href="#">
-            <span class="icon-paragraph-left"></span>
-        </a>
-        -->
+        <span id="headerMessage">Welcome</span>
         <div class="clearfix"></div>
     </header>                            
 
 	<main>
         <section>
+
             <div class="p_m_right p_m_left">
                 <h1 class="m_l_top">Layout Manager</h1>
                 <h2 class="m_m_top">Layouts \<span class="level2"></span></h2>
@@ -217,24 +153,77 @@
 
             <ul id="templates" class="hidden">
                 <li id="layoutListTemplate" class="list-grid-25">
-                    <div class="wrp round-sd p_m_bottom border-sd">    
+                    <div class="wrp round-sd">    
                         <img class="_100" src="" alt="" />
-                        <div class="bg-fa _100 p_m_left p_m_right p_m_bottom align_rt">
+                        <div class="bg-fff _100 p_m_left p_m_right p_l_bottom p_m_top p_m_top align_rt clearfix">
                             <p class="productName txt_xs"></p>
-                            <a class="edit auto _33_s" data-type="edit"><span class="txt_xs">EDIT</span> <span class="icon-eye"></span></a>
-                            <a class="copy auto _33_s" data-type="copy"><span class="txt_xs">COPY</span> <span class="icon-copy"></span></a>
+                            <a class="edit auto _33_s load-canvas" data-type="edit"><span class="txt_xs">EDIT</span> <span class="icon-eye"></span></a>
+                            <a class="copy auto _33_s load-canvas" data-type="copy"><span class="txt_xs">COPY</span> <span class="icon-copy"></span></a>
                             <a class="linkTo auto _33_s" data-type="link"><span class="txt_xs">LINK</span> <span class="icon-cog"></span></a>
                         </div>
                     </div>
-                    <p class="txt_xs"><b>EDITED BY: </b> <span class="lastEdited"></span></p>
+                    <p class="txt_xs"><b>LAST EDIT: </b> <span class="lastEdited"></span></p>
                 </li>
             </ul>
+
         </section>
+
     </main>
+
+    <div id="wrap-layout-settings">
+        <section class="p_l relative">
+
+            <h1>Layout Settings</h1>
+            <h2>Product Name</h2>
+
+            <div class="underline-solid"></div>
+
+            <img id="img-layout-settings" class="ft_lt m_l_right" src="https://www.advancedimage.com.au/CreateJS/Layouts/1112.jpg" alt="" />
+
+            <div id="wrap-layout-info" class="clearfix p_l_top">
+
+                <span class="input_area fl_lt txt_sm" style="width:22em">
+                    <input id="insert-keywords" type="text" class="bg-fff" placeholder="Add Keywords" style="background:#fff" />
+                </span>
+
+                <p id="keywords-display"></p>
+
+                <div class="clearfix"></div>
+
+                <h4 class="m_l_top">Available in:</h4>
+                <ul id="wrap-layout-insert">
+                    <li>
+                        <a id="insert-school-com" href="#">Community School<span class="icon-checkmark2 fl_rt txt_sec_m hidden"></span></a>
+                    </li>
+                    <li>
+                        <a id="insert-school-ind" href="#">Indiviual School<span class="icon-checkmark2 fl_rt txt_sec_m hidden"></span></a>
+                    </li>
+                    <li>
+                        <a id="insert-sports-com" href="#">Community Sports<span class="icon-checkmark2 fl_rt txt_sec_m hidden"></span></a>
+                    </li>
+                    <li>
+                        <a id="insert-sports-ind" href="#">Individual Sports<span class="icon-checkmark2 fl_rt txt_sec_m hidden"></span></a>
+                    </li>
+                    <li>
+                        <a id="insert-school-cli" href="#">Client Portal<span class="icon-checkmark2 fl_rt txt_sec_m hidden"></span></a>
+                    </li>
+                </ul>
+
+                <button id="delete-layout" class="button round-sd">DELETE LAYOUT</div>
+
+                <a href="#" id="close-layout-bottom"><span class="icon-arrow-up txt_ntl_m"></span></a>
+                <a href="#" id="close-layout-top"><span class="icon-cross txt_ntl_m"></span></a>
+            
+            </div>
+
+
+
+        </section>    
+    </div>
 
 	<footer></footer>
 
-    <span id="screenSizeTesting">
+    <span id="screenSizeTesting" class="hidden">
         <div id="testing_phone">
         </div>
         <div id="testing_tablet">
@@ -244,5 +233,45 @@
         <div id="testing_desktop_lg">
         </div>
 	</span>
+
+<script>
+    var layouts = []
+    var productInfo = []
+</script>
+
+<script>
+
+$(function(){
+
+    $('#wrap-layout-settings').css('top', $('header').outerHeight() + 'px');
+
+    $(window).on('resize', function()
+    {
+        $('#wrap-layout-settings').css('top', $('header').outerHeight() + 'px');
+    });
+
+
+    $.ajax(
+    {
+        url: 'http://192.168.0.216/AdvAPI/api/WCAPValues/Photocreate/', 
+        type: 'GET',
+        username: 'WebAPIPhotocreateUser',
+        password: '@dvw3b@piu$3r',
+        success: function(data)
+        {
+            $.each(data, function(index, value)
+            {
+               productInfo.push({'name': value.description, 'id': value.id, 'groupName': value.groupName, 'itemName': value.itemName });
+            });
+            var listProducts = new ElementBuilder('tabLinks', 'productList', productInfo);
+        }
+    });
+
+    var sortDate = new EventManager('sort', 'sort-date');
+    var linkInit = new LayoutSettings();
+
+});
+
+</script>
 
 </body>	

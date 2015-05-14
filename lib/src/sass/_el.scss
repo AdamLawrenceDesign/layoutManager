@@ -678,6 +678,67 @@ ul#quickLinks li div[class^="icon-"], ul#quickLinks-temp li div[class^="icon-"]
 	text-align:center !important;
 }
 */
+
+#wrap-layout-settings
+{
+	background:#fafafa;
+	height:auto;
+	width: 100%;
+	position: absolute;
+	top:4em;
+	left:0;
+	z-index:200;
+	padding-bottom:2em;
+	@extend .box-shadow;
+
+	#img-layout-settings
+	{
+		float:left;
+		margin-top: 1em;
+		width:10em;
+		@extend .round-sd;
+	};
+
+	#wrap-layout-info
+	{
+		max-width: 26em;
+		display: inline-block;
+		
+		#delete-layout
+		{
+			margin-top: 1em;
+			padding:.5em;
+			width:auto;
+			background:$red_m;
+			font-size: .75em;
+		};
+		ul
+		{
+			li a 
+			{
+				padding:.25em 0;
+				display: block;
+			}
+		}
+	};
+
+	#close-layout-bottom, #close-layout-top
+	{
+		position: absolute;
+		right:1em;
+		top:2em;
+		right:1rem;
+		top:2rem;
+		font-size: 1.25em
+	}
+
+	#close-layout-bottom
+	{
+		bottom:1em;
+		top:auto;
+	}
+}
+
 .quickLinks 
 {
 	float:none;
