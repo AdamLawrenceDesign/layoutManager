@@ -695,48 +695,79 @@ ul#quickLinks li div[class^="icon-"], ul#quickLinks-temp li div[class^="icon-"]
 	{
 		float:left;
 		margin-top: 1em;
-		width:10em;
+		width:100%;
 		@extend .round-sd;
-	};
 
+	};
 	#wrap-layout-info
 	{
-		max-width: 26em;
-		display: inline-block;
-		
-		#delete-layout
+		display: block;
+		font-size: .9em;
+		b
 		{
-			margin-top: 1em;
+			font-size: .8em;
+			min-width:8em;
+			min-width:8rem;
+			color:#ccc;
+			display: inline-block;
+		}
+		#delete-layout, #commit-layout, #clear-keywords, #add-keywords
+		{
 			padding:.5em;
 			width:auto;
 			background:$red_m;
 			font-size: .75em;
+			font-size: 1.25em;
+			font-size: .9em;
+			display: inline-block;
+			width: auto;
 		};
+
+		#commit-layout, #add-keywords
+		{
+			background:$prm_m;
+		
+		};	
+
+		#clear-keywords
+		{
+			background:#ffbb00;
+		}
+
 		ul
 		{
+			font-size: .9em;
+			margin-top: 1em;
+			max-width: 18em;
 			li a 
 			{
 				padding:.25em 0;
 				display: block;
 			}
+			li a:hover
+			{
+				color:$prm_m;
+			}
+		}		
+		#close-layout-bottom, #close-layout-top
+		{
+			position: absolute;
+			right:1em;
+			top:2em;
+			right:1rem;
+			top:2rem;
+			font-size: 1.1em;
+			font-size: 1.1rem;
+		}
+
+		#close-layout-bottom
+		{
+			bottom:1em;
+			top:auto;
+			font-size: 1.1em;
+			font-size: 1.1rem;
 		}
 	};
-
-	#close-layout-bottom, #close-layout-top
-	{
-		position: absolute;
-		right:1em;
-		top:2em;
-		right:1rem;
-		top:2rem;
-		font-size: 1.25em
-	}
-
-	#close-layout-bottom
-	{
-		bottom:1em;
-		top:auto;
-	}
 }
 
 .quickLinks 

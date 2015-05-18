@@ -32,8 +32,6 @@ $prm_d	:#0084b4; */
   -o-user-select: none;
   user-select: none;
   -webkit-box-sizing: border-box;
-  /* ========= tried applying to all but caused problems with clearfix ========= */
-  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 /* Resets  */
@@ -300,7 +298,7 @@ img.border {
 .shadow-right {
   background-image: linear-gradient(to left, #F6F6F6 0%, #FFFFFF 8px) !important; }
 
-.round-sd, ul.tabs li ul.sub, #palette, #palette li ul, #wrap-layout-settings #img-layout-settings, header ul.tabs li ul.sub, ul.assetList img, ul#listSize img, .round-sd_right, #nav_lt, #testing_phone, #testing_tablet, #testing_desktop, #testing_desktop_lg, .round-sd_left, #to_top, #nav_rt, .rounded_sd, .button_ntl, .pagnation li a, .link_button {
+.round-sd, ul.tabs li ul.sub, #palette, #palette li ul, #wrap-layout-settings #img-layout-settings, header ul.tabs li ul.sub, ul.assetList img, ul#listSize img, .round-sd_right, #nav_lt, #testing_phone, #testing_tablet, #testing_desktop, #testing_desktop_lg, .round-sd_left, #to_top, #nav_rt, .rounded_sd, .button_ntl, .pagnation li a {
   display: block;
   overflow: hidden;
   /* ==== rounded ==== */
@@ -1045,29 +1043,51 @@ ul#quickLinks li div[class^="icon-"], ul#quickLinks-temp li div[class^="icon-"]
   #wrap-layout-settings #img-layout-settings {
     float: left;
     margin-top: 1em;
-    width: 10em; }
+    width: 100%; }
   #wrap-layout-settings #wrap-layout-info {
-    max-width: 26em;
-    display: inline-block; }
-    #wrap-layout-settings #wrap-layout-info #delete-layout {
-      margin-top: 1em;
+    display: block;
+    font-size: .9em; }
+    #wrap-layout-settings #wrap-layout-info b {
+      font-size: .8em;
+      min-width: 8em;
+      min-width: 8rem;
+      color: #ccc;
+      display: inline-block; }
+    #wrap-layout-settings #wrap-layout-info #delete-layout, #wrap-layout-settings #wrap-layout-info #commit-layout, #wrap-layout-settings #wrap-layout-info #clear-keywords, #wrap-layout-settings #wrap-layout-info #add-keywords {
       padding: .5em;
       width: auto;
       background: #ef0000;
-      font-size: .75em; }
-    #wrap-layout-settings #wrap-layout-info ul li a {
-      padding: .25em 0;
-      display: block; }
-  #wrap-layout-settings #close-layout-bottom, #wrap-layout-settings #close-layout-top {
-    position: absolute;
-    right: 1em;
-    top: 2em;
-    right: 1rem;
-    top: 2rem;
-    font-size: 1.25em; }
-  #wrap-layout-settings #close-layout-bottom {
-    bottom: 1em;
-    top: auto; }
+      font-size: .75em;
+      font-size: 1.25em;
+      font-size: .9em;
+      display: inline-block;
+      width: auto; }
+    #wrap-layout-settings #wrap-layout-info #commit-layout, #wrap-layout-settings #wrap-layout-info #add-keywords {
+      background: #00b3c8; }
+    #wrap-layout-settings #wrap-layout-info #clear-keywords {
+      background: #ffbb00; }
+    #wrap-layout-settings #wrap-layout-info ul {
+      font-size: .9em;
+      margin-top: 1em;
+      max-width: 18em; }
+      #wrap-layout-settings #wrap-layout-info ul li a {
+        padding: .25em 0;
+        display: block; }
+      #wrap-layout-settings #wrap-layout-info ul li a:hover {
+        color: #00b3c8; }
+    #wrap-layout-settings #wrap-layout-info #close-layout-bottom, #wrap-layout-settings #wrap-layout-info #close-layout-top {
+      position: absolute;
+      right: 1em;
+      top: 2em;
+      right: 1rem;
+      top: 2rem;
+      font-size: 1.1em;
+      font-size: 1.1rem; }
+    #wrap-layout-settings #wrap-layout-info #close-layout-bottom {
+      bottom: 1em;
+      top: auto;
+      font-size: 1.1em;
+      font-size: 1.1rem; }
 
 .quickLinks {
   float: none;
@@ -1445,15 +1465,9 @@ button.auto {
 input.white {
   background: #fff; }
 
-.asp_element {
-  cursor: pointer; }
-
-/*========= for ASP Buttons ===========*/
 .input_area, .input_area_select {
-  /* ========= span class surrending inputs ========= */
   position: relative;
-  border: 1px solid #ecedf0;
-  /*@extend .round_sd;*/ }
+  border: 1px solid #ecedf0; }
 
 .input_area .input-icon, .input_area_select .input-icon {
   position: absolute; }
@@ -1470,15 +1484,13 @@ span span.input-icon {
   height: 1em; }
 
 input:focus, textarea:focus, select:focus {
-  /* ========= remove Chrome Defaults ========= */
-  -webkit-box-shadow: 0px 0px 8px 0px rgba(130, 153, 192, 0.5);
-  -moz-box-shadow: 0px 0px 8px 0px rgba(130, 153, 192, 0.5);
-  box-shadow: 0px 0px 8px 0px rgba(130, 153, 192, 0.5);
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(192, 192, 192, 0.5);
+  -moz-box-shadow: 0px 0px 8px 0px rgba(192, 192, 192, 0.5);
+  box-shadow: 0px 0px 8px 0px rgba(192, 192, 192, 0.5);
   outline-width: 0; }
 
 select {
   position: relative;
-  /* ========= select ========= */
   text-indent: 0.01px;
   -webkit-appearance: none;
   /*Removes default chrome and safari style*/
@@ -1495,7 +1507,6 @@ select {
   right: 0;
   height: 100%;
   width: 2.1em;
-  /*padding-left:.25em;*/
   padding-top: .6em;
   pointer-events: none;
   background: #f9f9f9; }
@@ -1550,6 +1561,9 @@ label {
 	opacity: 1;
 }
 */
+input:focus {
+  outline: none !important; }
+
 .valid .input-icon {
   color: #55acee;
   color: #73b64a;
@@ -1592,21 +1606,6 @@ textarea {
 
 .button_ntl:hover, .pagnation li a:hover, .pagnation li a.selected {
   background: #00b3c8; }
-
-.link_button {
-  background: #6caddf;
-  color: #fff;
-  padding: 0 .75em;
-  font-weight: 500;
-  cursor: pointer;
-  text-shadow: none;
-  font-weight: 500;
-  font-family: 'Roboto', sans-serif;
-  /*
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-   border-radius: 4px
-   */ }
 
 button::-moz-focus-inner, select::-moz-focus-inner {
   border: 0; }

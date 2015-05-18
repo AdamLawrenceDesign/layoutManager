@@ -1,4 +1,3 @@
-
 /* ============================ */
 /* ======== Variabless ======== */
 
@@ -60,8 +59,7 @@ $opacity_sd : .5;	/* opacity */
 	-ms-user-select: none;
 	-o-user-select: none;
 	user-select: none;	
-	-webkit-box-sizing: border-box;														/* ========= tried applying to all but caused problems with clearfix ========= */
-	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;											
 	box-sizing: border-box;
 }
 

@@ -3,6 +3,7 @@
 <head>
 
     <title>Layout Manager | Index Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shortcut icon" href="img/logo.png">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,500italic|Open+Sans:400,300,700,600,300italic' rel='stylesheet' type='text/css'>
@@ -14,11 +15,12 @@
     <!-- <script type="text/javascript" src="lib/prod/project.min.js"></script> -->
     <script type="text/javascript" src="lib/src/js/vert-center.js"></script>
     <script type="text/javascript" src="lib/src/js/masonry.pkgd.min.js"></script>
-    <script type="text/javascript" src="lib/src/js/element-builder.js"></script>
     <script type="text/javascript" src="lib/src/js/redirect-manager.js"></script>
+    <script type="text/javascript" src="lib/src/js/server-query.js"></script>
+    <script type="text/javascript" src="lib/src/js/build-list.js"></script>
     <script type="text/javascript" src="lib/src/js/layout-settings.js"></script>
-    <script type="text/javascript" src="lib/src/js/event-manager.js"></script>
-    <script type="text/javascript" src="lib/src/js/layoutManager-init.js"></script>
+    <script type="text/javascript" src="lib/src/js/list-controllers.js"></script>
+    <script type="text/javascript" src="lib/src/js/build-tabs.js"></script>
     
 </head>
 
@@ -167,56 +169,84 @@
             </ul>
 
         </section>
-
     </main>
 
     <div id="wrap-layout-settings">
-        <section class="p_l relative">
+
+        <section class="p_l relative clearfix">
 
             <h1>Layout Settings</h1>
-            <h2>Product Name</h2>
+            <h2>Change Settings</h2>
 
             <div class="underline-solid"></div>
 
-            <img id="img-layout-settings" class="ft_lt m_l_right" src="https://www.advancedimage.com.au/CreateJS/Layouts/1112.jpg" alt="" />
+            <div class="_25_m p_l_right">
+                 <img id="img-layout-settings" class="ft_lt m_l_right" src="" alt="" />
+            </div>    
 
-            <div id="wrap-layout-info" class="clearfix p_l_top">
+            <div id="wrap-layout-info" class="_75_m">
+
+                <div class="clearfix p_l_top">
+
+                        <h4 style="margin-top:0;">Layout Information:</h4>
+
+                        <p class="fl_lt" style="margin-top:0;">
+                            <b>ITEM NAME: </b><span id="info-settings-itemName"></span></br>
+                            <b>GROUP NAME: </b><span id="info-settings-groupName"></span></br>
+                            <b>DESCRIPTION: </b><span id="info-settings-description"></span></br>
+                            <b>PRODUCT ID: </b><span id="info-settings-productId"></span></br>
+                            <b>LAYOUT ID: </b><span id="info-settings-layoutId"></span></br>
+                            <b>LAST EDIT: </b><span id="info-settings-lastEdit"></span></br>
+                            <b>RANK: </b><span id="info-settings-rank"></span></br>
+                            <b>KEYWORDS: </b><span id="info-settings-keywords"></span></br>
+                            <b>PAGES: </b><span id="info-settings-pages"></span></br>
+                        </p>
+                        <div class="clearfix"></div>
+                </div> 
+
+                <div class="underline-solid clearfix"></div>
+
+                <h4>Edit Details:</h4>
 
                 <span class="input_area fl_lt txt_sm" style="width:22em">
                     <input id="insert-keywords" type="text" class="bg-fff" placeholder="Add Keywords" style="background:#fff" />
                 </span>
 
-                <p id="keywords-display"></p>
-
+                <button id="add-keywords" class="button round-sd m_m_left">ADD</button>
+                <button id="clear-keywords" class="button round-sd m_m_left">CLEAR KEYWORDS</button>
+                
                 <div class="clearfix"></div>
 
-                <h4 class="m_l_top">Available in:</h4>
                 <ul id="wrap-layout-insert">
                     <li>
-                        <a id="insert-school-com" href="#">Community School<span class="icon-checkmark2 fl_rt txt_sec_m hidden"></span></a>
+                        <a id="insert-community" href="#">Available In Community<span class="icon-checkmark2 m_l_left txt_sec_m hidden"></span></a>
                     </li>
                     <li>
-                        <a id="insert-school-ind" href="#">Indiviual School<span class="icon-checkmark2 fl_rt txt_sec_m hidden"></span></a>
+                        <a id="insert-school" href="#">Available In School<span class="icon-checkmark2 m_l_left txt_sec_m hidden"></span></a>
                     </li>
                     <li>
-                        <a id="insert-sports-com" href="#">Community Sports<span class="icon-checkmark2 fl_rt txt_sec_m hidden"></span></a>
+                        <a id="insert-sports" href="#">Available In Sports<span class="icon-checkmark2 m_l_left  txt_sec_m hidden"></span></a>
                     </li>
                     <li>
-                        <a id="insert-sports-ind" href="#">Individual Sports<span class="icon-checkmark2 fl_rt txt_sec_m hidden"></span></a>
+                        <a id="insert-family" href="#">Available In Family<span class="icon-checkmark2 m_l_left  txt_sec_m hidden"></span></a>
                     </li>
                     <li>
-                        <a id="insert-school-cli" href="#">Client Portal<span class="icon-checkmark2 fl_rt txt_sec_m hidden"></span></a>
+                        <a id="insert-client" href="#">Available In Client<span class="icon-checkmark2 m_l_left  txt_sec_m hidden"></span></a>
+                    </li>                    
+                    <li>
+                        <a id="insert-other" href="#">Available In Other<span class="icon-checkmark2 m_l_left  txt_sec_m hidden"></span></a>
                     </li>
                 </ul>
 
-                <button id="delete-layout" class="button round-sd">DELETE LAYOUT</div>
+                <div class="underline-solid clearfix m_l_top m_l_bottom"></div>
+
+                <button id="commit-layout" class="button round-sd">COMMIT CHANGES</button>
+                <button id="delete-layout" class="button round-sd">DELETE LAYOUT</button>
+                <div class="clearfix"></div>                 
 
                 <a href="#" id="close-layout-bottom"><span class="icon-arrow-up txt_ntl_m"></span></a>
                 <a href="#" id="close-layout-top"><span class="icon-cross txt_ntl_m"></span></a>
-            
-            </div>
-
-
+            </div>  
 
         </section>    
     </div>
@@ -235,39 +265,41 @@
 	</span>
 
 <script>
-    var layouts = []
-    var productInfo = []
+    var layouts = [],
+        productInfo = [],
+        todaysDate;
 </script>
 
 <script>
 
 $(function(){
 
-    $('#wrap-layout-settings').css('top', $('header').outerHeight() + 'px');
+    $('#wrap-layout-settings').css('top', $('header').outerHeight() + 'px').css('display','none');
 
-    $(window).on('resize', function()
-    {
-        $('#wrap-layout-settings').css('top', $('header').outerHeight() + 'px');
-    });
+    // GET PRODUCT LIST FOR MENUS 
+    // USING SERVER QUERY OBJECT TO MAKE THE REQUEST
+    var getDate = new ServerRequest('http://192.168.0.216/AdvAPI/api/CurrentDate', 'GET', null, function(data)
+        {
+            todaysDate = data;
+        });
 
 
-    $.ajax(
-    {
-        url: 'http://192.168.0.216/AdvAPI/api/WCAPValues/Photocreate/', 
-        type: 'GET',
-        username: 'WebAPIPhotocreateUser',
-        password: '@dvw3b@piu$3r',
-        success: function(data)
+    var getProductList = new ServerRequest('http://192.168.0.216/AdvAPI/api/WCAPValues/Photocreate/', 'GET', null, function(data)
         {
             $.each(data, function(index, value)
             {
-               productInfo.push({'name': value.description, 'id': value.id, 'groupName': value.groupName, 'itemName': value.itemName });
+                productInfo.push({
+                    'description': value.description, 
+                    'id': value.id, 
+                    'groupName': value.groupName, 
+                    'itemName': value.itemName,
+                    'pages': value.numberOfPages
+                });
             });
-            var listProducts = new ElementBuilder('tabLinks', 'productList', productInfo);
-        }
-    });
+            var listProducts = new BuildTabs(null, productInfo);        
+        });
 
-    var sortDate = new EventManager('sort', 'sort-date');
+    var sortDate = new ListControllers('sort', 'sort-date');
     var linkInit = new LayoutSettings();
 
 });
