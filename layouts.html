@@ -34,7 +34,6 @@
 
 	<main>
         <section>
-
             <div class="p_m_right p_m_left">
                 <h1 class="m_l_top">Layout Manager</h1>
                 <h2 class="m_m_top">Layouts \<span class="level2"></span></h2>
@@ -135,7 +134,7 @@
                     </li>
                 </ul>
 
-                <span class="input_area m_l_top fl_rt txt_sm" style="width:15em">
+                <span class="input_area m_l_top fl_rt txt_sm">
                     <input id="keywords" type="text" class="bg-fff" placeholder="Keyword Search" style="background:#fff" />
                 </span>
 
@@ -167,12 +166,10 @@
                     <p class="txt_xs"><b>LAST EDIT: </b> <span class="lastEdited"></span></p>
                 </li>
             </ul>
-
         </section>
     </main>
 
     <div id="wrap-layout-settings">
-
         <section class="p_l relative clearfix">
 
             <h1>Layout Settings</h1>
@@ -185,39 +182,36 @@
             </div>    
 
             <div id="wrap-layout-info" class="_75_m">
-
                 <div class="clearfix p_l_top">
-
-                        <h4 style="margin-top:0;">Layout Information:</h4>
-
-                        <p class="fl_lt" style="margin-top:0;">
-                            <b>ITEM NAME: </b><span id="info-settings-itemName"></span></br>
-                            <b>GROUP NAME: </b><span id="info-settings-groupName"></span></br>
-                            <b>DESCRIPTION: </b><span id="info-settings-description"></span></br>
-                            <b>PRODUCT ID: </b><span id="info-settings-productId"></span></br>
-                            <b>LAYOUT ID: </b><span id="info-settings-layoutId"></span></br>
-                            <b>LAST EDIT: </b><span id="info-settings-lastEdit"></span></br>
-                            <b>RANK: </b><span id="info-settings-rank"></span></br>
-                            <b>KEYWORDS: </b><span id="info-settings-keywords"></span></br>
-                            <b>PAGES: </b><span id="info-settings-pages"></span></br>
-                        </p>
-                        <div class="clearfix"></div>
+                    <h4 style="margin-top:0;">Layout Information:</h4>
+                    <p class="fl_lt" style="margin-top:0;">
+                        <b>ITEM NAME: </b><span id="info-settings-itemName"></span></br>
+                        <b>GROUP NAME: </b><span id="info-settings-groupName"></span></br>
+                        <b>DESCRIPTION: </b><span id="info-settings-description"></span></br>
+                        <b>PRODUCT ID: </b><span id="info-settings-productId"></span></br>
+                        <b>LAYOUT ID: </b><span id="info-settings-layoutId"></span></br>
+                        <b>LAST EDIT: </b><span id="info-settings-lastEdit"></span></br>
+                        <b>RANK: </b><span id="info-settings-rank"></span></br>
+                        <b>KEYWORDS: </b><span id="info-settings-keywords"></span></br>
+                        <b>PAGES: </b><span id="info-settings-pages"></span></br>
+                    </p>
+                    <div class="clearfix"></div>
                 </div> 
 
                 <div class="underline-solid clearfix"></div>
 
                 <h4>Edit Details:</h4>
 
-                <span class="input_area fl_lt txt_sm" style="width:22em">
+                <span class="input_area fl_lt txt_sm">
                     <input id="insert-keywords" type="text" class="bg-fff" placeholder="Add Keywords" style="background:#fff" />
                 </span>
 
                 <button id="add-keywords" class="button round-sd m_m_left">ADD</button>
-                <button id="clear-keywords" class="button round-sd m_m_left">CLEAR KEYWORDS</button>
+                <button id="clear-keywords" class="button round-sd">CLEAR</button>
                 
                 <div class="clearfix"></div>
 
-                <ul id="wrap-layout-insert">
+                <ul id="wrap-layout-insert" class="clearfix m_m_bottom">
                     <li>
                         <a id="insert-community" href="#">Available In Community<span class="icon-checkmark2 m_l_left txt_sec_m hidden"></span></a>
                     </li>
@@ -237,6 +231,22 @@
                         <a id="insert-other" href="#">Available In Other<span class="icon-checkmark2 m_l_left  txt_sec_m hidden"></span></a>
                     </li>
                 </ul>
+
+                <b>RANK</b>
+                <span class="input_area_select border_ntl round_sd relative txt_xs">
+                    <select id="change-rank">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                    </select>
+                    <label class="icon-arrow-down border_box"></label>
+                </span>
 
                 <div class="underline-solid clearfix m_l_top m_l_bottom"></div>
 
@@ -282,7 +292,6 @@ $(function(){
         {
             todaysDate = data;
         });
-
 
     var getProductList = new ServerRequest('http://192.168.0.216/AdvAPI/api/WCAPValues/Photocreate/', 'GET', null, function(data)
         {

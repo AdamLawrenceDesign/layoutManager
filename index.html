@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 
     <link rel="stylesheet" href="lib/prod/screen.css?v1.1" />
-	<script type="text/javascript" src="lib/prod/project.min.js"></script>
+    <script type="text/javascript" src="lib/src/js/vert-center.js"></script>
+    <script type="text/javascript" src="lib/src/js/redirect-manager.js"></script>
     
 </head>
 
@@ -21,23 +22,23 @@
     <div id="login-container" class="relative round_sd align_ct p_l_bottom round-sd p_l bg-trans-drk" style="overflow:visible">
         <img src="assets/svg/logo.svg" alt="logo" style="margin-top:-4.5em;height:7em;" />
         <span class="input_area_select border_ntl round-sd relative clearfix m_l_top" style="width:auto"> 
-            <select>
+            <select class="_100">
                 <option>User Name</option>
-                <option>Adam</option>
-                <option>Arlen</option>
-                <option>Michelle</option>
-                <option>William</option>
-                <option>Zac</option>
+                <option val="111111">Adam</option>
+                <option val="111116">Arlen</option>
+                <option val="111117">Michelle</option>
+                <option val="111118">William</option>
+                <option val="111119">Zac</option>
             </select>
-            <label class="icon-triangle-dwn border_box"></label>
+            <label class="icon-triangle-dwn border_box" style="padding-top:.5em"></label>
         </span> 
         <div class="clearfix"></clearfix>
-        <button class="m_m_top m_l_bottom clearfix round-sd bg-ntl-m">Enter Site</button>
+        <button class="m_m_top m_l_bottom clearfix round-sd bg-ntl-m _100">Enter Site</button>
         <div class="clearfix" style="height:1em"></div>
     </div>
 </div>
 
-<span id="screenSizeTesting">
+<span id="screenSizeTesting" class="hidden">
     <div id="testing_phone">
     </div>
     <div id="testing_tablet">
@@ -47,6 +48,10 @@
     <div id="testing_desktop_lg">
     </div>
 </span>
+
+<script>
+    var userId, userName;
+</script>
     
 <script type="text/javascript">
 
@@ -54,16 +59,20 @@ $(function()
 {
     var centerLogin = new CenterDiv('login-container');
 
+    $('select').on('change', function()
+    {
+        userId = $(this.options[this.selectedIndex]).attr('val');
+        userName = this.options[this.selectedIndex].text;
+    });
+
+
     $('button').on('click', function()
     {
-        var result, targetPage;
-        
-        result = $('select').val();
+        if(!userId) return;
+
         targetPage = 'layouts.html';
         
-        if(result == 'User Name') return;       // Escape out of funtion if user not selected
-        result = 'user=' + result;
-
+        result = 'userId=' + userId + '?%userName=' + userName + '?end';
         var redirectPageNow = new Redirect('layoutManager', targetPage, result); // (rootDir, pageRef, addInfo
 
     });
