@@ -2,10 +2,9 @@
 /*=========== Form Elements ===========*/ 
 
 input, textarea, select, button, .asp_hack 
-{													/* ========= global  ========= */
+{								
 	position:relative;
 	-webkit-appearance: none;
-	width:100%;
 	font-weight:300;
 	@extend .border_box;
 	padding:.5em;
@@ -15,7 +14,9 @@ input, textarea, select, button, .asp_hack
 	border:none;
 	cursor:pointer;
 	margin:0;
-	background:$off_white;
+	background:#fff;
+	width:auto;
+	display: inline-block;
 }
 
 button.auto
@@ -66,12 +67,14 @@ input:focus, textarea:focus, select:focus
 
 select 
 {
-	position:relative;														
+	position:relative;	
+	padding-right:3em;													
+	padding-left:1em;													
 	text-indent: 0.01px;
-	-webkit-appearance: none; 														/*Removes default chrome and safari style*/
-	-moz-appearance: none; 															/* Removes Default Firefox style*/
+	-webkit-appearance: none; 										
+	-moz-appearance: none; 															
 	appearance:none;
-	text-overflow: "";  															/*Removes default arrow from firefox*/ /*My custom style for fonts*/
+	text-overflow: "";  
 }
 
 .input_area_select label 
@@ -81,13 +84,15 @@ select
 	right:0;
 	height:100%;
 	width:2.1em;
-	padding-top:.6em;
+	padding-top:.1em;
 	pointer-events:none;
-	background:#f9f9f9
+	background:#fff;
 }
 
 label
 {
+	display: inline-block;
+	width:100%;
 	text-align:left;
 	[class^="icon-"]
 	{
