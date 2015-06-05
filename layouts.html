@@ -1,33 +1,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
     <title>Layout Manager | Index Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shortcut icon" href="img/logo.png">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,500italic|Open+Sans:400,300,700,600,300italic' rel='stylesheet' type='text/css'>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-
-    <link rel="stylesheet" href="lib/prod/screen.css?v1.1" />
-    <!-- <script type="text/javascript" src="lib/prod/project.min.js"></script> -->
-    <script type="text/javascript" src="lib/src/js/vert-center.js"></script>
-    <script type="text/javascript" src="lib/src/js/masonry.pkgd.min.js"></script>
-    <script type="text/javascript" src="lib/src/js/redirect-manager.js"></script>
-    <script type="text/javascript" src="lib/src/js/server-query.js"></script>
-    <script type="text/javascript" src="lib/src/js/build-list.js"></script>
-    <script type="text/javascript" src="lib/src/js/layout-settings.js"></script>
-    <script type="text/javascript" src="lib/src/js/list-controllers.js"></script>
-    <script type="text/javascript" src="lib/src/js/build-tabs.js"></script>
-    
+    <link rel="stylesheet" href="lib/prod/screen.css?v1.1" /> 
 </head>
 
 <body>
 
-    <header class="prm box-shadow ease_sd">
-        <img id="header_logo" class="fl_lt" src="assets/svg/logo.svg?v1.1" alt="" />
+    <header class="prm box-shadow ease_sd linear">
+        <a href="index.html"><img id="header_logo" class="fl_lt" src="assets/svg/logo.svg?v1.1" alt="" /></a>
         <span id="headerMessage">Welcome</span>
         <div class="clearfix"></div>
     </header>                            
@@ -145,8 +131,8 @@
 
             <div class="relative">
                 <div class="load-item"></div> 
-                <div id="error-message" class="block-red hidden m_l_top p_l_left p_l_right">
-                    <p><b>Error: </b>Sorry a match could not be found, please try another search</p>
+                <div id="error-message" class="block-ntl m_m m_l_top p_l_left p_l_right">
+                    <p><b style="color:red">ERROR: </b>Sorry a match could not be found, please try another search<a href="#" class="fl_rt"><span class="icon-cross"></span></a></p>
                 </div> 
                 <ul id="layoutList" class="relative m_l_top listGrid">
                 </ul>                
@@ -274,6 +260,24 @@
         </div>
 	</span>
 
+    <div id="loading-fullPage">
+        <div class="spinner"></div>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+<!-- <script type="text/javascript" src="lib/prod/project.min.js"></script> -->
+<script type="text/javascript" src="lib/src/js/vert-center.js"></script>
+<script type="text/javascript" src="lib/src/js/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="lib/src/js/redirect-manager.js"></script>
+<script type="text/javascript" src="lib/src/js/server-query.js"></script>
+<script type="text/javascript" src="lib/src/js/loading.js"></script>
+<script type="text/javascript" src="lib/src/js/build-list.js"></script>
+<script type="text/javascript" src="lib/src/js/layout-settings.js"></script>
+<script type="text/javascript" src="lib/src/js/list-controllers.js"></script>
+<script type="text/javascript" src="lib/src/js/build-tabs.js"></script>
+
 <script>
     var layouts = [],
         productInfo = [],
@@ -282,35 +286,35 @@
 
 <script>
 
+var startLoader = new PageLoader(null);
+$('#wrap-layout-settings').css('top', $('header').outerHeight() + 'px').css('display','none');
+
 $(function(){
 
-    $('#wrap-layout-settings').css('top', $('header').outerHeight() + 'px').css('display','none');
+// GET PRODUCT LIST FOR MENUS 
+// USING SERVER QUERY OBJECT TO MAKE THE REQUEST
+var getDate = new ServerRequest('http://192.168.0.216/AdvAPI/api/CurrentDate', 'GET', null, function(data)
+    {
+        todaysDate = data;
+    });
 
-    // GET PRODUCT LIST FOR MENUS 
-    // USING SERVER QUERY OBJECT TO MAKE THE REQUEST
-    var getDate = new ServerRequest('http://192.168.0.216/AdvAPI/api/CurrentDate', 'GET', null, function(data)
+var getProductList = new ServerRequest('http://192.168.0.216/AdvAPI/api/WCAPValues/Photocreate/', 'GET', null, function(data)
+    {
+        $.each(data, function(index, value)
         {
-            todaysDate = data;
-        });
-
-    var getProductList = new ServerRequest('http://192.168.0.216/AdvAPI/api/WCAPValues/Photocreate/', 'GET', null, function(data)
-        {
-            $.each(data, function(index, value)
-            {
-                productInfo.push({
-                    'description': value.description, 
-                    'id': value.id, 
-                    'groupName': value.groupName, 
-                    'itemName': value.itemName,
-                    'pages': value.numberOfPages
-                });
+            productInfo.push({
+                'description': value.description, 
+                'id': value.id, 
+                'groupName': value.groupName, 
+                'itemName': value.itemName,
+                'pages': value.numberOfPages
             });
-            var listProducts = new BuildTabs(null, productInfo);        
         });
-
-    var sortDate = new ListControllers('sort', 'sort-date');
-    var linkInit = new LayoutSettings();
-
+        var listProducts = new BuildTabs(null, productInfo);   
+        var sortDate = new ListControllers('sort', 'sort-date');
+        var linkInit = new LayoutSettings(); 
+        startLoader.finishedLoading();    
+    });
 });
 
 </script>

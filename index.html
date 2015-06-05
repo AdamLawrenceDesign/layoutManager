@@ -1,56 +1,69 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
     <title>Layout Manager | Index Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shortcut icon" href="img/logo.png">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,500italic|Open+Sans:400,300,700,600,300italic' rel='stylesheet' type='text/css'>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-
     <link rel="stylesheet" href="lib/prod/screen.css?v1.1" />
-    <script type="text/javascript" src="lib/src/js/vert-center.js"></script>
-    <script type="text/javascript" src="lib/src/js/redirect-manager.js"></script>
-    
 </head>
 
 <body class="bg-img">
 
-<div class="absolute_max prm_lt">
-    <div id="login-container" class="relative round_sd align_ct p_l_bottom round-sd p_l bg-trans-drk" style="overflow:visible">
-        <img src="assets/svg/logo.svg" alt="logo" style="margin-top:-4.5em;height:7em;" />
-        <span class="input_area_select border_ntl round-sd relative clearfix m_l_top" style="width:auto"> 
-            <select class="_100">
-                <option>User Name</option>
-                <option val="111111">Adam</option>
-                <option val="111116">Arlen</option>
-                <option val="111117">Michelle</option>
-                <option val="111118">William</option>
-                <option val="111119">Zac</option>
-            </select>
-            <label class="icon-triangle-dwn border_box" style="padding-top:.5em"></label>
-        </span> 
-        <div class="clearfix"></clearfix>
-        <button class="m_m_top m_l_bottom clearfix round-sd bg-ntl-m _100">Enter Site</button>
-        <div class="clearfix" style="height:1em"></div>
+    <div class="absolute_max prm_lt">
+        <div id="login-container" class="relative round_sd align_ct p_l_bottom round-sd p_l bg-trans-drk" style="overflow:visible">
+            <img src="assets/svg/logo.svg" alt="logo" style="margin-top:-4.5em;height:7em;" />
+            <span class="input_area_select border_ntl round-sd relative clearfix m_l_top" style="width:auto"> 
+                <select class="_100">
+                    <option>User Name</option>
+                    <option val="111111">Adam</option>
+                    <option val="111116">Arlen</option>
+                    <option val="111117">Michelle</option>
+                    <option val="111120">Stef</option>
+                    <option val="111121">Steph</option>
+                    <option val="111118">William</option>
+                    <option val="111119">Zac</option>
+                </select>
+                <label class="icon-triangle-dwn border_box" style="padding-top:.5em"></label>
+            </span> 
+            <div class="clearfix"></clearfix>
+            <button class="m_m_top m_l_bottom clearfix round-sd bg-ntl-m _100">Enter Site</button>
+            <div class="clearfix" style="height:1em"></div>
+        </div>
     </div>
-</div>
 
-<span id="screenSizeTesting" class="hidden">
-    <div id="testing_phone">
+    <span id="screenSizeTesting" class="hidden">
+        <div id="testing_phone">
+        </div>
+        <div id="testing_tablet">
+        </div>
+        <div id="testing_desktop">
+        </div>
+        <div id="testing_desktop_lg">
+        </div>
+    </span>
+
+    <div id="loading-fullPage">
+        <div class="spinner"></div>
     </div>
-    <div id="testing_tablet">
-    </div>
-    <div id="testing_desktop">
-    </div>
-    <div id="testing_desktop_lg">
-    </div>
-</span>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+<script type="text/javascript" src="lib/src/js/vert-center.js"></script>
+<script type="text/javascript" src="lib/src/js/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="lib/src/js/redirect-manager.js"></script>
+<script type="text/javascript" src="lib/src/js/server-query.js"></script>
+<script type="text/javascript" src="lib/src/js/loading.js"></script>
+<script type="text/javascript" src="lib/src/js/build-list.js"></script>
+<script type="text/javascript" src="lib/src/js/layout-settings.js"></script>
+<script type="text/javascript" src="lib/src/js/list-controllers.js"></script>
+<script type="text/javascript" src="lib/src/js/build-tabs.js"></script>
 
 <script>
     var userId, userName;
+    var startLoader = new PageLoader(null);
 </script>
     
 <script type="text/javascript">
@@ -58,6 +71,7 @@
 $(function()
 {
     var centerLogin = new CenterDiv('login-container');
+    startLoader.finishedLoading();
 
     $('select').on('change', function()
     {
@@ -71,7 +85,8 @@ $(function()
 
         targetPage = 'layouts.html';
         
-        result = 'userId=' + userId + '?%userName=' + userName + '?end';
+        result = 'userId=' + userId + '&userName=' + userName;
+        // console.log(result)
         var redirectPageNow = new Redirect('layoutManager', targetPage, result); // (rootDir, pageRef, addInfo
 
     });

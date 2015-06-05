@@ -17,7 +17,32 @@
 	bottom:0;
 	left:0;
 	right:0;
-	margin:auto
+	margin:auto;
+}
+
+#loading-fullPage 
+{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:#fff;
+	z-index:101;
+	.spinner
+	{
+		position: absolute;
+		top:0;
+		bottom:0;
+		left:0;
+		right:0;
+		height:2em;
+		width:2em;
+		margin:auto;
+		background: url('../../assets/img/loading.gif');
+		background-size: 100%;
+		position:absolute;
+	}
 }
 
 .load
@@ -315,7 +340,6 @@ body.bg-img
 
 header 
 {	
-	/* position:fixed; */
 	top:0;
 	background:$prm_d;
 	color:#fff;
@@ -687,7 +711,7 @@ ul#quickLinks li div[class^="icon-"], ul#quickLinks-temp li div[class^="icon-"]
 	position: absolute;
 	top:4em;
 	left:0;
-	z-index:200;
+	z-index:100;
 	padding-bottom:2em;
 	@extend .box-shadow;
 

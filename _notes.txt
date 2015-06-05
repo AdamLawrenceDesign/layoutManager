@@ -1,4 +1,15 @@
 
+JAVASCRIPT LINKS
+
+<script type="text/javascript" src="lib/src/js/vert-center.js"></script>
+<script type="text/javascript" src="lib/src/js/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="lib/src/js/redirect-manager.js"></script>
+<script type="text/javascript" src="lib/src/js/server-query.js"></script>
+<script type="text/javascript" src="lib/src/js/loading.js"></script>
+<script type="text/javascript" src="lib/src/js/build-list.js"></script>
+<script type="text/javascript" src="lib/src/js/layout-settings.js"></script>
+<script type="text/javascript" src="lib/src/js/list-controllers.js"></script>
+<script type="text/javascript" src="lib/src/js/build-tabs.js"></script>
 
 //**********************//
 
